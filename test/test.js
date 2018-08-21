@@ -8,15 +8,18 @@ const expect  = chai.expect
 
 chai.use(chaiHttp);
 
-describe('/POST /api/auth/signup', () => {
-    it('it should signup a new user', (done) => {
+describe('/POST /api/articles', () => {
+    it('it should create a new article', function(done) {
         chai.request('http://localhost:3000')
-        .get('/api/auth/signup')
+        .post('/api/articles')
         .end(function(err, res) {
-            expect((res).to.have.status('201'))
+            expect(res.to.have.status('201'))
             expect((res).to.be.a('object'))
+            expect((err).to.be.null)
             done()
         })
         
     })
+
+    
 })

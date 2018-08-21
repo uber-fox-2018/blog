@@ -16,6 +16,14 @@ if(process.env.NODE_ENV === 'test') {
 }
 mongoose.connect(database, { useNewUrlParser: true })
 
+// router 
+const ArticleRoute = require('./routes/ArticleRoute')
+const UserRoute = require('./routes/UserRoute')
+
+app.use('/api/articles', ArticleRoute)
+app.use('/api/auth', UserRoute)
+
+
 // handle error
 app.use((req, res, next) => {
     const error = new Error('Not found')
@@ -33,4 +41,8 @@ app.use((error, req, res, next) => {
     next(error)
 })
 
-module.exports = app
+app.get('/', function(req, res) {
+    res.send('testtt')
+})
+
+app.listen(3000)
