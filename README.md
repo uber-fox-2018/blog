@@ -3,7 +3,8 @@
 How to use :
 
 ```
-npm install
+$_ npm install
+$_ npm start
 ```
 
 Route
